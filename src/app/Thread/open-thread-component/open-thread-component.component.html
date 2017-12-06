@@ -1,0 +1,40 @@
+<div class="ui segments beetjePadding">
+  
+  <div class="ui segment">
+    <h1>Title: {{thread?.titel}}</h1>
+    <p>Posted By: {{thread?.afzender}}</p>
+  </div>
+  <div class="ui segment minHoogte">
+    <p>{{thread?.inhoud}}</p>
+  </div>
+  <div class="ui segment">
+    <ul id="menu" class="fixPadding">
+      <li class="marginRight">
+        <a class="active" type="submit">Reply</a>
+      </li>
+      <li class="marginRight">
+        <a class="active">Like</a>
+      </li>
+      <li class="marginRight">
+        <a class="active">Report</a>
+      </li>
+      <li>
+        <a *ngIf="kanVerwijderen" (click)="verwijderThread()">Delete</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="beetjePadding2">
+    <h2 class="beetjePadding">Reactions</h2>
+</div>
+
+
+  <app-thread-reply-component *ngFor="let myPost of posts" [threadReply]="myPost"></app-thread-reply-component>
+
+
+<form [formGroup]="_form" (ngSubmit)="onSubmit()" class="ui segments beetjePadding">
+  <textarea class="minHoogte minBreedte" formControlName="txtInhoud">
+
+  </textarea>
+  <button class="ui button" type="submit" [disabled]="!_form.valid">Reply</button>
+</form>

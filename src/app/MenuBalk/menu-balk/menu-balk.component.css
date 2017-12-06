@@ -1,0 +1,35 @@
+li {
+    display: inline-block;
+    color: #3f3e3e;
+    text-transform: uppercase;
+    padding-top: 1em;
+}
+
+nav {
+    text-align: right;
+    padding-top: 1em;
+}
+
+a{
+    display: inline-block;
+    padding: 0 1em 1em 1em;
+}
+
+a:hover{
+    color: #A2ED00; 
+    border-bottom: 2px solid #A2ED00;
+}
+
+.inloggen {
+    border-left: 1px solid #3f3e3e;
+    text-transform: none;
+}
+
+.active{
+    color: #A2ED00; 
+    border-bottom: 2px solid #A2ED00;
+}
+
+ul{
+    border-bottom: 3px solid #F5F5F5;
+}

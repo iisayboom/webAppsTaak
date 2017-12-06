@@ -1,0 +1,13 @@
+<div class="item">
+  <i class="large fototje middle aligned icon"></i>
+  <div class="content fixBreedte">
+    <a class="header" [routerLink]="['/OpenThread', thread?.id]">
+          Title: {{thread?.titel}} 
+      <div class="header lijntje miniBeetjePaddingTop">
+          ~Posted By: {{thread?.afzender}} ~
+      </div>
+      </a>
+    <div class="description paddingBeneden">{{descriptionShort}}</div>
+    <div class="replies">Replies: {{replies}}</div>
+  </div>
+</div>

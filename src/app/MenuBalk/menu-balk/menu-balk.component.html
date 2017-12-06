@@ -1,0 +1,13 @@
+<nav>
+  <ul>
+    <li><a routerLink="./AllThreads" routerLinkActive="active">Overview</a></li>
+    <li><a routerLink="./AddThread" routerLinkActive="active">New Thread</a></li>
+    <li *ngIf='(currentUser | async) else ingelogd'><a routerLink="./LogOut" routerLinkActive="active">Log Out</a></li>
+    <li *ngIf='(currentUser | async)'><a routerLink="./Profile" routerLinkActive="active">{{currentUser|async}}</a></li>
+  </ul>
+</nav>
+
+<ng-template #ingelogd>
+    <li><a routerLink="./Login" routerLinkActive="active">Login</a></li>
+    <li><a routerLink="./Register" routerLinkActive="active">Register</a></li>
+</ng-template>

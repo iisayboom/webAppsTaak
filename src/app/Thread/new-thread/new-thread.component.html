@@ -1,0 +1,18 @@
+<form [formGroup]="_form" (ngSubmit)="onSubmit()" class="ui form">
+    <div class="field eenPaarProps" id="titel">
+      <label>Titel</label>
+      <textarea formControlName="txtTitel"></textarea>
+    </div>
+
+    <div class="field eenPaarProps" id="inhoud">
+        <label>Inhoud</label>
+        <textarea formControlName="txtInhoud"></textarea>
+        <div class='' *ngIf=' _form.get("txtInhoud").errors?.required && _form.get("txtInhoud").touched'>
+            a description is required
+          </div>
+      </div>
+
+          <button class="ui button" type="submit" [disabled]="!_form.valid">
+              Save
+            </button>
+</form>

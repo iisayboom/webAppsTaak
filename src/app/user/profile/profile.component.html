@@ -1,0 +1,12 @@
+<h1 class="beetjePaddingLinks">Hello {{showUser}} !!</h1>
+
+<ul>
+    <li>
+        Aantal persoonlijk gemaakte threads: {{threads?.length}}
+    </li>
+</ul>
+
+<h2 class="beetjePaddingLinks">Personal Started Threads</h2>
+<div class="ui relaxed divided list segments beetjePaddingOveral" *ngFor="let myThread of threads" [thread]="myThread" app-profile-container>
+
+</div>

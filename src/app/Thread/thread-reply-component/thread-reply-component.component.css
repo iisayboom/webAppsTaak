@@ -1,0 +1,34 @@
+.beetjePadding {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.minHoogte {
+    min-height: 150px;
+}
+
+.minBreedte {
+    min-width: 90%;
+    margin: 0 auto;
+}
+
+ul#menu li {
+    display:inline;
+}
+
+.fixPadding {
+    padding-left: 0px;
+}
+
+.marginRight {
+    margin-right: 15px;
+}
+
+a{
+    display: inline-block;
+    padding: 0 1em 1em 1em;
+}
+
+a:hover{
+    color: #A2ED00; 
+}
