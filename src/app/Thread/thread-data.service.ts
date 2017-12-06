@@ -9,8 +9,8 @@ import { AuthenticationService } from '../user/authentication.service';
 @Injectable()
 export class ThreadDataService {
 
-  private _appUrl = "http://localhost:4200/API/threads/";
-  private _appUrlProfile = "http://localhost:4200/API/Profile/";
+  private _appUrl = "/API/threads/";
+  private _appUrlProfile = "/API/Profile/";
 
   
   //private auth:AuthenticationService nog toevoegen
