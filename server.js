@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/dist'));
 app.listen(process.env.PORT || 4200);
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ProjectAngular', { useMongoClient: true });
+mongoose.connect(process.env.DATABASE, { useMongoClient: true });
 
 require('./backend/models/User');
 require('./backend/models/Post');
