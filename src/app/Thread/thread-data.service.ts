@@ -43,7 +43,7 @@ export class ThreadDataService {
 
   public verwijderThread(id:string): Observable<string> {
     return this.http.delete(`${this._appUrl}/delete/thread/${id}`, {
-      headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) }).map(response => response.json());
+      headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) }).map(response => {console.log(response); return response.json()});
   }
 
 
