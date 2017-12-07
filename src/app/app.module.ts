@@ -1,3 +1,4 @@
+import { UserModule } from './user/user.module';
 import { ThreadReplyComponentComponent } from './Thread/thread-reply-component/thread-reply-component.component';
 import { AuthGuardService } from './user/auth-guard.service';
 import { RegisterComponent } from './user/register/register.component';
@@ -36,7 +37,8 @@ import { ProfileComponent } from './user/profile/profile.component';
     HttpModule,
     AppRoutingModule,
     SuiModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserModule
   ],
   providers: [ThreadDataService,AuthenticationService,AuthGuardService, ThreadResolver],
   bootstrap: [AppComponent]

@@ -29,10 +29,6 @@ const routes = [
     RegisterComponent,
     LogoutComponent,
     ProfileComponent,
-    LoginComponent,
-    LogoutComponent,
-    RegisterComponent,
-    ProfileComponent,
     ProfileContainerComponent
   ],
   providers: [

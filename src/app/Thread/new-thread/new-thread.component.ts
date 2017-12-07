@@ -25,9 +25,9 @@ export class NewThreadComponent implements OnInit {
 
   onSubmit() {
     const thread = new Thread(this._form.value.txtTitel,this.auth.user$.getValue(),this._form.value.txtInhoud);
-    this.threadDataService.newThread(thread,).subscribe(response => {
+    this.threadDataService.newThread(thread).subscribe(response => {
       this.router.navigate(["/AllThreads/"]);
-    });
+    }, err => console.log(err));
   }
 
 }

@@ -35,8 +35,10 @@ export class OpenThreadComponentComponent implements OnInit, OnDestroy {
   
   onSubmit() {
     const post = new ThreadReply(this.auth.user$.getValue(),this._form.value.txtInhoud);
-    this.threadDataService.newThreadReply(post, this._thread.id).subscribe();
-    this.router.navigate(["/AllThreads/"]);
+    this.threadDataService.newThreadReply(post, this._thread.id).subscribe(response =>{ 
+      this.router.navigate(["/AllThreads/"]);
+    });
+    
   }
 
     public ngOnDestroy(): void {
@@ -56,5 +58,5 @@ export class OpenThreadComponentComponent implements OnInit, OnDestroy {
       this.threadDataService.verwijderThread(this.thread.id).subscribe(response => {
         this.router.navigate(["/AllThreads/"]);
       });
-    }
+    };
 }

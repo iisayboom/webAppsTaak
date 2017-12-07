@@ -9,7 +9,7 @@ import { AuthenticationService } from '../user/authentication.service';
 @Injectable()
 export class ThreadDataService {
 
-  private _appUrl = "/API/threads/";
+  private _appUrl = "/API/threads";
   private _appUrlProfile = "/API/Profile/";
 
   
@@ -19,7 +19,7 @@ export class ThreadDataService {
   }
 
   public get threads(): Observable<Thread[]>  {
-    return this.http.get(`${this._appUrl}getAll`).map(response => response.json().map(thread => new Thread(thread.titel,thread.user.username, thread.inhoud,thread._id, thread.posts)));
+    return this.http.get(`${this._appUrl}/getAll`).map(response => response.json().map(thread => new Thread(thread.titel,thread.user.username, thread.inhoud,thread._id, thread.posts)));
   }
 
   public personalThreads(name:string): Observable<Thread[]>  {
@@ -28,22 +28,23 @@ export class ThreadDataService {
   }
 
   public newThread(t:Thread): Observable<Thread> {
-    return this.http.post(`${this._appUrl}${this.auth.user$.getValue()}/addThread`, t,{
+    return this.http.post(`${this._appUrl}/${this.auth.user$.getValue()}/addThread`, t,{
       headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) }).map(response => response.json()).map(thread => new Thread(thread.titel, thread.user.username, thread.inhoud, thread._id, thread.posts));
   }
 
   public getThread(id:string): Observable<Thread> {
-    return this.http.get(`${this._appUrl}getThread/${id}`).map(response => response.json()).map(thread => new Thread(thread.titel, thread.user.username, thread.inhoud,thread._id, thread.posts));
+    return this.http.get(`${this._appUrl}/getThread/${id}`).map(response => response.json()).map(thread => new Thread(thread.titel, thread.user.username, thread.inhoud,thread._id, thread.posts));
   }
 
   public newThreadReply(tr:ThreadReply, id:string): Observable<Thread> {
-    return this.http.post(`${this._appUrl}${id}/addThreadReply`, tr,{
+    return this.http.post(`${this._appUrl}/${id}/addThreadReply`, tr,{
       headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) }).map(response => response.json()).map(thread => new Thread(thread.titel, thread.user.username, thread.inhoud, thread._id, thread.posts));
   }
 
-  public verwijderThread(id:string): Observable<string> {
+  public verwijderThread(id:string): Observable<any> {
     return this.http.delete(`${this._appUrl}/delete/thread/${id}`, {
-      headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) }).map(response => {console.log(response); return response.json()});
+      //headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) }).map(response => {console.log(response); return response.json()});
+      headers: new Headers({Authorization: `Bearer ${this.auth.token}`}) });
   }
 
 
