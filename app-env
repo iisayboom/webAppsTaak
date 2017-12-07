@@ -1,5 +1,0 @@
-export BACKEND_SECRET="HetMaaktEchtNietUitWatHierStaatMaarHetIsPuurVoorDeVeiligheid";
-
-export DATABASE="mongodb://localhost/ProjectAngular";
-
-export TEST_VALID_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTI5NTFhODY1YmU2NzAwMTQ5ZmQxYTUiLCJ1c2VybmFtZSI6Imlpc2F5Ym9vbSIsImV4cCI6MTUxNzg0MzA5NSwiaWF0IjoxNTEyNjU5MDk1fQ.CE7j1ahhLW_SZfDWGmRDUQuOMWYru6AP1NmwajHf0Qo";
