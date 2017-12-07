@@ -16,6 +16,8 @@ let User = mongoose.model('User');
 router.get('/threads/getAll', function (req, res, next) {
   let query = Thread.find().populate("user");
   query.exec(function (err, threads) {
+    console.log("test");
+    console.log("Threads 1: " + threads);
     if (err) return next(err);
     if (!threads) return next(new Error('No threads found'));
     res.json(threads);
@@ -79,18 +81,30 @@ router.post('/threads/:username/addThread', auth, function (req, res, next) {
   User.findOne({
     username: req.params.username
   }, function (err, user) {
+    console.log(user);
+    console.log("body");
+    console.log(req.body);
     if (err) return next(err);
     if (!user) return next(new Error("User not found"));
     let thread = new Thread(req.body);
-    thread.user = user;
+    console.log("before set user " + user);
+    thread.user = user._id;
     thread.save(function (err, t) {
       if (err) {
+        console.log("thread save failed");
         return next(err);
       }
       user.threads.push(t);
+      console.log("thread " + t);
       user.save(function(err, u){
-        if(err) return next(err);
+        if(err) {
+          console.log("user save failed");
+          
+          return next(err);
+        }
+        console.log(t);
         res.json(t);
+        console.log(res);
       });
     });
   });
@@ -112,7 +126,7 @@ router.delete('/threads/delete/thread/:threadId', function (req, res, next) {
     }
     t.remove(function (err, thread) {
       if (err) return next(err);
-      res.json("DOOOOOOOOOOOONNNNNNNNNNNEEEEEEEEEE");
+      res.json({});
     });
   });
 });
