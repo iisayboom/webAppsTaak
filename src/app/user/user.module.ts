@@ -35,6 +35,7 @@ const routes = [
     
   ],
   exports: [
+    
   ]
 })
 export class UserModule { }
