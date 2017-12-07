@@ -7,63 +7,7 @@ describe("Server", () => {
 
   });
   afterAll(() => {});
-  /*
-  describe("POST /API/recipes", () => {
-      let data = {};
-      // add a new recipe to our database
-      beforeAll((done) => {
-          Request(
-              { method: 'POST'
-              , uri: 'http://localhost:3000/API/recipes'
-              , json: true
-              , body: {name:"spaghetti"}
-              }, (error, response, body) => {
-              data.status = response.statusCode;
-              data.body = body;
-              done();
-          }).auth(null, null, true, process.env.TEST_VALID_TOKEN);
-      });
-      it("status 200", () => {
-          expect(data.status).toBe(200);
-      });
-      it("check body", () => {
-          expect(data.body.name).toBe("spaghetti");
-          expect(data.body.ingredients.length).toBe(0);
-          expect(data.body._id).toBeDefined();
-          firstRecipeId = data.body._id;
-      });
-  });
-  describe("POST /API/recipes/ingredients", () => {
-      let data = {};
-      // add a new recipe to our database
-      beforeAll((done) => {
-          Request(
-              { method: 'POST'
-              , uri: `http://localhost:3000/API/recipe/${firstRecipeId}/ingredients`
-              , json: true
-              , body: {
-                  name: "salt",
-                  amount: "4",
-                  unit: "Gram"
-              }
-              }, (error, response, body) => {
-              data.status = response.statusCode;
-              data.body = body;
-              done();
-          }).auth(null, null, true, process.env.TEST_VALID_TOKEN);
-      });
-      it("status 200", () => {
-          expect(data.status).toBe(200);
-      });
-      it("check body", () => {
-          expect(data.body.name).toBe("salt");
-          expect(data.body.amount).toBe(4);
-          expect(data.body.unit).toBe("Gram");
-          expect(data.body._id).toBeDefined();
 
-      });
-  });
-  */
   describe("GET /API/allThreads", () => {
     var data = {};
     beforeAll((done) => {
@@ -207,6 +151,24 @@ describe("Server", () => {
     });
   });
 
+  describe("GET /API/allThreads", () => {
+    var data = {};
+    beforeAll((done) => {
+      Request.get("http://localhost:4200/API/threads/getAll", (error, response, body) => {
+        data.status = response.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      });
+    });
+    it("Status 200", () => {
+      expect(data.status).toBe(200);
+    });
+    it("Body", () => {
+      expect(data.body.length).toBe(2);
+    });
+
+  });
+
   describe("GET /API/allThreadsByUser", () => {
     var data = {};
     beforeAll((done) => {
@@ -225,23 +187,4 @@ describe("Server", () => {
 
   });
 
-
-  /*
-  describe("GET /API/recipes", () => {
-      var data = {};
-      beforeAll((done) => {
-          Request.get("http://localhost:3000/API/recipes", (error, response, body) => {
-              data.status = response.statusCode;
-              data.body = JSON.parse(body);
-              done();
-          }).auth(null, null, true, process.env.TEST_VALID_TOKEN);
-      });
-      it("Status 200", () => {
-          expect(data.status).toBe(200);
-      });
-      it("Body", () => {
-          expect(data.body.length).toBe(0);
-      });
-  });
-  */
 });
